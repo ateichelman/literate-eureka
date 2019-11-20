@@ -1,0 +1,18 @@
+{
+  "testing": {
+    "subsDBName": "testing",
+    "alertDBName": "alertsTest",
+    "listenPort": 4400,
+    "targetURL": "mongodb://localhost:27017/subscriptions",
+    "sendGridKey": "N/A",
+    "alertSender": "N/A"
+  },
+  "release": {
+    "subsDBName": "subscriptionsDB",
+    "alertDBName": "alertsDB",
+    "listenPort": 4400,
+    "targetURL": "mongodb://localhost:27017/subscriptions",
+    "sendGridKey": "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",
+    "alertSender": "docsimAlerts@bar.com"
+  }
+}
