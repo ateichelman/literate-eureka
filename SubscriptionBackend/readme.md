@@ -1,6 +1,6 @@
-# Docsim Subscriber DB
+# DB
 
-Used by the Docsim Subscriber service to store subscriptions and send subscription alerts.
+Used by the some service to store subscriptions and send subscription alerts.
 
 ## Installation
 
