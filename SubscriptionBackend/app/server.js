@@ -53,7 +53,7 @@ async function main() {
   });
 
   // Send ALL Subscriptions
-  app.route("/aw/api/subscriptions").get((req, response) => {
+  app.route("/api/subscriptions").get((req, response) => {
     db.collection(dbName)
       .find({})
       .toArray((err, result) => {
@@ -66,7 +66,7 @@ async function main() {
   });
 
   // Responds with collection of subs under that user name.
-  app.route("/aw/api/subscriptions/:targetUser").get((req, res) => {
+  app.route("/api/subscriptions/:targetUser").get((req, res) => {
     var targetUser = req.params.targetUser;
     db.collection(dbName)
       .find({ "subscriber.username": targetUser }, { projection:{ '_id': 0 } })
@@ -84,7 +84,7 @@ async function main() {
   });
 
   // Responds with collection of subs under that docID.
-  app.route("/aw/api/subscriptions/all/:targetDoc").get((req, res) => {
+  app.route("/api/subscriptions/all/:targetDoc").get((req, res) => {
     var targetDoc = req.params.targetDoc;
     db.collection(dbName)
       .find({ docID: targetDoc })
@@ -99,7 +99,7 @@ async function main() {
 
   // Insert new subscription into database.
   app.use(bodyParser.json());
-  app.route("/aw/api/subscriptions").post((req, res) => {
+  app.route("/api/subscriptions").post((req, res) => {
 
     // Is this user already subscribed to this document? If no, then subscribe.
     db.collection(dbName).save(req.body, (err, result) => {
@@ -111,7 +111,7 @@ async function main() {
   });
 
   // Remove subscriptions with specific id and subscriber.user.
-  app.route("/aw/api/subscriptions/:user/:docID").delete((req, res) => {
+  app.route("/api/subscriptions/:user/:docID").delete((req, res) => {
     var targetDoc = req.params.docID;
     var targetUser = req.params.user;
 
@@ -130,7 +130,7 @@ async function main() {
   });
 
   // Update a specific subscription belonging to a target user.
-  app.route("/aw/api/subscriptions/:user/:docID").put((req, res) => {
+  app.route("/api/subscriptions/:user/:docID").put((req, res) => {
     var targetDoc = req.params.docID;
     var targetUser = req.params.user;
     db.collection(dbName).replaceOne(
@@ -147,7 +147,7 @@ async function main() {
 
   // Send email to the address contained in the target subscription, alerting user to
   // a new upload matching their subscription settings.
-  app.route("/aw/api/subscriptions/alert").post((req, res) => {
+  app.route("/api/subscriptions/alert").post((req, res) => {
 
     alertDB.collection(alertDBName).save(req.body, (err, result) => {
       if (err) return console.log(err);
