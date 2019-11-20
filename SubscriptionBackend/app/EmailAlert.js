@@ -73,7 +73,7 @@ function sendMail(alertContent){
       subject: "New Matched Documents",
       //text: ''
       html:
-        "<h1>Recent uploads to docsim have matched your subscribed documents!</h1><body>" +
+        "<h1>Recent uploads have matched your subscribed documents!</h1><body>" +
         obj.mergedTitles.toString() +
         "</body>"
     };
